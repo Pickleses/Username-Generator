@@ -1,36 +1,19 @@
-let button;
-let sel;
-let searchinp;
 let forceA, forceB, forceC;
 let A, B, C;
 let final;
-let gY = 50;
 let div;
+let generated = false;
 
 function setup() {
-  //createCanvas(1000, 1000);
-  // searchinp = createInput("Required words go here");
-  //
-  // sel = createSelect();
-  // sel.option(1);
-  // sel.option(5);
-  // sel.option(10);
-  // sel.option(50);
-  // button = createButton("Generate");
-  // button.mousePressed(Generate);
 
-  select(".button").mousePressed(Generate);
+  select(".button").mousePressed(makeName);
 }
-
-function Generate() {
-  //for (var i = 0; i < sel.value(); i++) {
-  makeName();
-  //}
-}
-
-//else console.log("not found");
 
 function makeName() {
+  if (generated) {
+	  div.remove();
+	  generated = false;
+  }
   let num = floor(random(0, adjs.length));
   let num1 = floor(random(0, nouns.length));
   let num2 = floor(random(0, finisher.length));
@@ -91,8 +74,9 @@ function makeName() {
       div = createP(B + C);
     }
   }
-  div.style("font", "25px Verdana", "sans-serif");
+  div.style("font", "60px Verdana", "sans-serif");
   div.style("color", "#ecf0f1");
-  div.style("margin", "20px");
+  div.style("margin", "150px");
   div.attribute("align", "center");
+  generated = true;
 }
